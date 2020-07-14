@@ -2,37 +2,18 @@
 {% load static %}
 {% block content %}
    <div class="row">
+   {% for product in products %}
    		<div class="col-lg-4">
-   			<img class="thumbnail" src="{% static 'images/flat.jpg' %}">
+   			<img class="thumbnail" src="{{ product.imageURL }}">
    			<div class="box-element product">
-   				<h6><strong>Product</strong></h6>
+   				<h6><strong>{{ product.name }}</strong></h6>
    				<hr>
-   				<button class="btn btn-outline-secondary add-btn">Add to Cart</button>
+   				<button data-product="{{ product.id }}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
    				<a class="btn btn-outline-success" href="#">View</a>
-   				<h4 style="display: inline-block; float: right;" >KES.11000</h4>
+   				<h4 style="display: inline-block; float: right;" >KES.{{ product.price|floatformat:2 }}</h4>
    			</div>
    		</div>
 
-   		<div class="col-lg-4">
-   			<img class="thumbnail" src="{% static 'images/subwoofer.jpg' %}">
-   			<div class="box-element product">
-   				<h6><strong>Product</strong></h6>
-   				<hr>
-   				<button class="btn btn-outline-secondary add-btn">Add to Cart</button>
-   				<a class="btn btn-outline-success" href="#">View</a>
-   				<h4 style="display: inline-block; float: right;" >KES.4000</h4>
-   			</div>
-   		</div>
-
-   		<div class="col-lg-4">
-   			<img class="thumbnail" src="{% static 'images/infinix.jpg' %}">
-   			<div class="box-element product">
-   				<h6><strong>Product</strong></h6>
-   				<hr>
-   				<button class="btn btn-outline-secondary add-btn">Add to Cart</button>
-   				<a class="btn btn-outline-success" href="#">View</a>
-   				<h4 style="display: inline-block; float: right;" >KES.8780</h4>
-   			</div>
-   		</div>
+   	{% endfor %}
    </div>
 {% endblock %}
